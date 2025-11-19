@@ -3,7 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <title>Contact - Alyaa</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+
+            /* Fancy dotted background pattern */
+            background-image: radial-gradient(rgba(255,105,180,0.25) 1px, transparent 1px),
+                              radial-gradient(rgba(255,105,180,0.15) 1px, transparent 1px);
+            background-size: 40px 40px, 70px 70px;
+            background-position: 0 0, 20px 20px;
+        }
+
+        /* ===== Glowing Animated Header ===== */
+        header {
+            background: linear-gradient(90deg, #ff69b4, #ff1493);
+            color: black;
+            padding: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 30px;
+
+            /* Glowing effect */
+            animation: glowHeader 4s infinite alternate ease-in-out,
+                       fadeIn 1.5s ease-in-out;
+            box-shadow: 0 0 20px rgba(255,105,180,0.6);
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: rgba(17, 17, 17, 0.9);
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(4px);
+            border-bottom: 1px solid #ff69b4;
+        }
+
+        nav a {
+            color: #ff69b4;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #fff;
+            text-shadow: 0 0 12px #ff69b4;
+            transform: scale(1.08);
+        }
+
+        nav a.active {
+            color: #fff;
+            text-shadow: 0 0 12px #ff69b4;
+        }
+
+        /* ===== Scrolling Fade + Parallax Section ===== */
+        section {
+            padding: 50px;
+            max-width: 1000px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1.2s ease forwards;
+            animation-timeline: view();
+            animation-range: entry 0% cover 50%;
+        }
+
+        h2 {
+            color: #ff69b4;
+            border-left: 5px solid #ff69b4;
+            padding-left: 15px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== Animated Cards ===== */
+        .card {
+            background-color: rgba(17, 17, 17, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #ff69b4;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.25);
+            margin-bottom: 25px;
+            transition: 0.4s ease;
+        }
+
+        .fade-up {
+            animation: slideIn 1.2s ease forwards;
+            animation-timeline: view();
+            animation-range: entry 0% cover 40%;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 0 25px rgba(255, 105, 180, 0.7);
+        }
+
+        /* Glow Hover Image */
+        .page-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 20px;
+            border: 3px solid #ff69b4;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 20px auto;
+            transition: 0.4s;
+        }
+
+        .page-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #ff69b4;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background: #ff69b4;
+            color: black;
+            padding: 12px 25px;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s ease;
+            border: 2px solid #ff1493;
+        }
+
+        .btn:hover {
+            background: #ff1493;
+            color: #fff;
+            box-shadow: 0 0 15px #ff69b4;
+            transform: scale(1.07);
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #ff69b4;
+            transition: all 0.3s ease;
+            width: 100px;
+        }
+
+        .social-icon:hover {
+            color: #fff;
+            transform: translateY(-5px);
+        }
+
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(255, 105, 180, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            border: 2px solid #ff69b4;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover .icon-circle {
+            background: rgba(255, 105, 180, 0.2);
+            box-shadow: 0 0 15px #ff69b4;
+            transform: scale(1.1);
+        }
+
+        .social-icon i {
+            font-size: 30px;
+        }
+
+        .social-text {
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+        }
+
+        .contact-icon {
+            color: #ff69b4;
+            font-size: 24px;
+            width: 40px;
+            text-align: center;
+        }
+
+        /* TikTok Username Styling */
+        .tiktok-username {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: rgba(255, 105, 180, 0.1);
+            border-radius: 10px;
+            border-left: 3px solid #ff69b4;
+            transition: all 0.3s ease;
+        }
+
+        .tiktok-username:hover {
+            background: rgba(255, 105, 180, 0.2);
+            transform: translateX(5px);
+        }
+
+        .tiktok-username i {
+            color: #ff69b4;
+            font-size: 20px;
+        }
+
+        .tiktok-handle {
+            font-weight: 600;
+            color: #ff69b4;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #ff69b4;
+            background-color: #111;
+            margin-top: 40px;
+            border-top: 1px solid #ff69b4;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* ========== ANIMATIONS ========== */
+
+        @keyframes glowHeader {
+            0% {
+                box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493;
+            }
+            100% {
+                box-shadow: 0 0 35px #ff1493, 0 0 70px #ff69b4;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
 </head>
 
 <body>
@@ -28,20 +315,66 @@
     <img src="pic6.jpg" class="page-img" alt="Contact Photo">
 
     <div class="card fade-up">
-        <p style="font-size: 18px; margin-bottom: 10px;">
-            <strong style="color:#ff69b4;">📧 Email:</strong> nuralyaasha15@gmail.com
-        </p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                    <strong style="color:#ff69b4;">Email:</strong> nuralyaasha15@gmail.com
+                </div>
+            </div>
 
-        <p style="font-size: 18px;">
-            <strong style="color:#ff69b4;">📱 Phone:</strong> 011-555 29584
-        </p>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                    <strong style="color:#ff69b4;">Phone:</strong> 011-555 29584
+                </div>
+            </div>
+            
+            <!-- TikTok Username -->
+            <div class="tiktok-username">
+                <i class="fab fa-tiktok"></i>
+                <div>
+                    <strong style="color:#ff69b4;">TikTok:</strong> 
+                    <span class="tiktok-handle">@yourguwrll</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <!-- Email -->
+            <a href="mailto:nuralyaasha15@gmail.com?subject=Hello%20Alyaa&body=I%20would%20like%20to%20get%20in%20touch%20with%20you" class="social-icon" target="_blank">
+                <div class="icon-circle">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <span class="social-text">Email</span>
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.link/7pi3pk" class="social-icon" target="_blank">
+                <div class="icon-circle">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <span class="social-text">WhatsApp</span>
+            </a>
+
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@yourguwrll" class="social-icon" target="_blank">
+                <div class="icon-circle">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <span class="social-text">TikTok</span>
+            </a>
+        </div>
     </div>
 
 </section>
 
 <footer>© 2025 Nur Alyaa Natasha</footer>
-
-<script src="scroll.js"></script>
 
 </body>
 </html>
