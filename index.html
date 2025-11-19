@@ -3,7 +3,339 @@
 <head>
     <meta charset="UTF-8">
     <title>Home - Nur Alyaa Natasha</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Import Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+
+            /* Fancy dotted background pattern */
+            background-image: radial-gradient(rgba(255,105,180,0.25) 1px, transparent 1px),
+                              radial-gradient(rgba(255,105,180,0.15) 1px, transparent 1px);
+            background-size: 40px 40px, 70px 70px;
+            background-position: 0 0, 20px 20px;
+        }
+
+        /* ===== Glowing Animated Header ===== */
+        header {
+            background: linear-gradient(90deg, #ff69b4, #ff1493);
+            color: black;
+            padding: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 30px;
+
+            /* Glowing effect */
+            animation: glowHeader 4s infinite alternate ease-in-out,
+                       fadeIn 1.5s ease-in-out;
+            box-shadow: 0 0 20px rgba(255,105,180,0.6);
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: rgba(17, 17, 17, 0.9);
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(4px);
+            border-bottom: 1px solid #ff69b4;
+        }
+
+        nav a {
+            color: #ff69b4;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #fff;
+            text-shadow: 0 0 12px #ff69b4;
+            transform: scale(1.08);
+        }
+
+        /* ===== Scrolling Fade + Parallax Section ===== */
+        section {
+            padding: 50px;
+            max-width: 1000px;
+            margin: auto;
+            line-height: 1.7;
+
+            /* fade-up on scroll */
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1.2s ease forwards;
+            animation-timeline: view();
+            animation-range: entry 0% cover 50%;
+        }
+
+        h2 {
+            color: #ff69b4;
+            border-left: 5px solid #ff69b4;
+            padding-left: 15px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== Animated Cards ===== */
+        .card {
+            background-color: rgba(17, 17, 17, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #ff69b4;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.25);
+            margin-bottom: 25px;
+            transition: 0.4s ease;
+            animation: slideIn 1.2s ease forwards;
+            animation-timeline: view();
+            animation-range: entry 0% cover 40%;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 0 25px rgba(255, 105, 180, 0.7);
+        }
+
+        /* Glow Hover Image */
+        .page-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 20px;
+            border: 3px solid #ff69b4;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 20px auto;
+            transition: 0.4s;
+        }
+
+        .page-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #ff69b4;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background: #ff69b4;
+            color: black;
+            padding: 12px 25px;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s ease;
+            border: 2px solid #ff1493;
+        }
+
+        .btn:hover {
+            background: #ff1493;
+            color: #fff;
+            box-shadow: 0 0 15px #ff69b4;
+            transform: scale(1.07);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #ff69b4;
+            background-color: #111;
+            margin-top: 40px;
+            border-top: 1px solid #ff69b4;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* ========== ANIMATIONS ========== */
+
+        @keyframes glowHeader {
+            0% {
+                box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493;
+            }
+            100% {
+                box-shadow: 0 0 35px #ff1493, 0 0 70px #ff69b4;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ========== AUDIO PLAYER STYLES ========== */
+        .audio-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(17, 17, 17, 0.9);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 20px rgba(255, 105, 180, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.4s ease;
+            border: 2px solid #ff69b4;
+            backdrop-filter: blur(4px);
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .audio-player:hover {
+            box-shadow: 0 0 25px rgba(255, 105, 180, 0.7);
+            transform: translateY(-5px);
+        }
+        
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .audio-btn {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(255, 105, 180, 0.5);
+        }
+        
+        .audio-btn:hover {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px #ff69b4;
+        }
+        
+        .volume-control {
+            width: 90px;
+            height: 6px;
+            background: rgba(255, 105, 180, 0.3);
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+        
+        .volume-control::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #ff69b4;
+            cursor: pointer;
+            box-shadow: 0 0 8px rgba(255, 105, 180, 0.8);
+            transition: all 0.2s ease;
+        }
+        
+        .volume-control::-webkit-slider-thumb:hover {
+            background: #ff1493;
+            transform: scale(1.2);
+        }
+        
+        .audio-info {
+            font-size: 13px;
+            color: #ff69b4;
+            max-width: 120px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 600;
+        }
+        
+        .audio-toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
+            z-index: 1000;
+            transition: all 0.4s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .audio-toggle:hover {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ff69b4;
+        }
+        
+        .audio-toggle.hidden {
+            transform: translateY(80px);
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .audio-player.hidden {
+            transform: translateX(200px);
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        /* Sound notification */
+        .sound-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 105, 180, 0.9);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            transform: translateY(-100px);
+            transition: transform 0.5s ease;
+            font-weight: 600;
+            border: 2px solid #ff1493;
+            backdrop-filter: blur(4px);
+        }
+        
+        .sound-notification.show {
+            transform: translateY(0);
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 105, 180, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 105, 180, 0);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -28,7 +360,7 @@
     <div class="card">
 
         <!-- Profile Image -->
-        <img src="profile.jpg" class="page-img" alt="Your Photo">
+        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="page-img" alt="Profile Photo">
 
         <!-- Name -->
         <h3 style="text-align:center; color:#ff69b4; margin-top:10px;">
@@ -50,9 +382,110 @@
 
 </section>
 
+<!-- Sound notification -->
+<div class="sound-notification" id="soundNotification">
+    🎵 Background music is playing
+</div>
+
+<!-- Audio toggle button -->
+<button class="audio-toggle" id="audioToggle">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 3V21M8 8V16M16 6V18M4 10V14M20 10V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+</button>
+
+<!-- Audio player -->
+<div class="audio-player hidden" id="audioPlayer">
+    <div class="audio-controls">
+        <button class="audio-btn" id="playPauseBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="playIcon">
+                <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
+            </svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="pauseIcon" style="display: none;">
+                <path d="M6 4H10V20H6V4Z" fill="currentColor"/>
+                <path d="M14 4H18V20H14V4Z" fill="currentColor"/>
+            </svg>
+        </button>
+        <input type="range" min="0" max="1" step="0.01" value="0.5" class="volume-control" id="volumeControl">
+    </div>
+    <div class="audio-info" id="audioInfo">Background Music</div>
+</div>
+
+<!-- Audio element -->
+<audio id="backgroundMusic" loop>
+    <!-- You can replace this with your own audio file -->
+    <source src="https://assets.codepen.io/1468070/soft-piano-background.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
 <footer>
     © 2025 Nur Alyaa Natasha
 </footer>
 
+<script>
+    // Audio elements
+    const audio = document.getElementById('backgroundMusic');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const volumeControl = document.getElementById('volumeControl');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const audioToggle = document.getElementById('audioToggle');
+    const soundNotification = document.getElementById('soundNotification');
+    const playIcon = document.getElementById('playIcon');
+    const pauseIcon = document.getElementById('pauseIcon');
+    const audioInfo = document.getElementById('audioInfo');
+    
+    // Play/pause functionality
+    playPauseBtn.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+            audioInfo.textContent = 'Playing';
+        } else {
+            audio.pause();
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+            audioInfo.textContent = 'Paused';
+        }
+    });
+    
+    // Volume control
+    volumeControl.addEventListener('input', function() {
+        audio.volume = volumeControl.value;
+    });
+    
+    // Toggle audio player visibility
+    audioToggle.addEventListener('click', function() {
+        audioPlayer.classList.toggle('hidden');
+        audioToggle.classList.toggle('hidden');
+    });
+    
+    // Show notification when audio starts playing
+    audio.addEventListener('play', function() {
+        soundNotification.classList.add('show');
+        setTimeout(function() {
+            soundNotification.classList.remove('show');
+        }, 3000);
+    });
+    
+    // Auto-play with user interaction (for better UX)
+    document.addEventListener('click', function initAudio() {
+        if (audio.paused) {
+            audio.play().then(() => {
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+                audioInfo.textContent = 'Playing';
+            }).catch(error => {
+                console.log('Auto-play was prevented:', error);
+            });
+        }
+        // Remove the event listener after first interaction
+        document.removeEventListener('click', initAudio);
+    });
+</script>
+
 </body>
 </html>
+</body>
+</html>
+
