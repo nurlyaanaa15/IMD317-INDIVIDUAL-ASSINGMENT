@@ -563,32 +563,31 @@
     </div>
 
     <!-- Video Section -->
-    <div class="card fade-in">
-        <h2 style="text-align: center;">
-            <i class="fas fa-video" style="margin-right: 15px;"></i>My Introduction Video
-        </h2>
+<div class="card fade-in">
+    <h2 style="text-align: center;">
+        <i class="fas fa-video" style="margin-right: 15px;"></i>My Introduction Video
+    </h2>
+    
+    <div class="video-container">
+        <!-- Replace "myvideo.mp4" with your actual video file path -->
+        <video controls poster="video-poster.jpg">
+            <source src="myvideo.mp4" type="video/mp4">
+            <source src="myvideo.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
         
-        <div class="video-container">
-            <!-- Video Placeholder - Replace with actual video -->
-            <div class="video-placeholder">
-                <i class="fas fa-film"></i>
-                <h3 style="margin-bottom: 10px;">Introduction Video Coming Soon</h3>
-                <p>This space is reserved for my personal introduction video</p>
-            </div>
-            
-            <!-- Uncomment and add your video file here -->
-            <!--
-            <video controls poster="myvideo.mp4">
-                <source src="myvideo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            -->
+        <!-- Fallback if video fails to load -->
+        <div class="video-fallback" style="display: none; text-align: center; padding: 20px;">
+            <i class="fas fa-exclamation-triangle" style="font-size: 40px; color: #ff69b4; margin-bottom: 15px;"></i>
+            <h3>Video Not Available</h3>
+            <p>Please check if the video file exists and the path is correct.</p>
         </div>
-        
-        <p class="video-caption">
-            Get to know me better through this short introduction video!
-        </p>
     </div>
+    
+    <p class="video-caption">
+        Get to know me better through this short introduction video!
+    </p>
+</div>
 
     <!-- Hobbies Section -->
     <div class="card fade-in">
@@ -698,5 +697,6 @@
 
 </body>
 </html>
+
 
 
